@@ -10,7 +10,7 @@ from viam.resource.types import Model, ModelFamily
 
 class MySensor(Sensor):
     # Subclass the Viam Arm component and implement the required functions
-    MODEL: ClassVar[Model] = Model(ModelFamily("fahmina","wifi_sensor"), "linux")
+    MODEL: ClassVar[Model] = Model(ModelFamily("team-registry","wifi_sensor"), "linux")
 
     @classmethod
     def new(cls, config: ComponentConfig, dependencies: Mapping[ResourceName, ResourceBase]) -> Self:
@@ -20,10 +20,10 @@ class MySensor(Sensor):
     async def get_readings(self, extra: Optional[Dict[str, Any]] = None, **kwargs) -> Mapping[str, Any]:
         with open("/proc/net/wireless") as wifi_stats:
             content = wifi_stats.readlines()
-        quality = content[2]
-        quality = quality.split(" ")
-        clean_quality = [x for x in quality if x != '']
-        return {"link": clean_quality[2], "level": clean_quality[3], "noise": clean_quality[4]}
+            quality = content[2]
+            quality = quality.split(" ")
+            clean_quality = [x for x in quality if x != '']
+            return {"link": clean_quality[2], "level": clean_quality[3], "noise": clean_quality[4]}
 
 async def main():
     wifi=MySensor(name="wifi")
