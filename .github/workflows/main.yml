@@ -10,7 +10,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: build
-      run: tar -czvf archive.tar.gz . # <-- your build command goes here
+      run: ./package.sh # <-- your build command goes here
     - uses: actions/upload-artifact@v3
       with:
         name: module
