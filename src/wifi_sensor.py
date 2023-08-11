@@ -23,7 +23,7 @@ class MySensor(Sensor):
             quality = content[2]
             quality = quality.split(" ")
             clean_quality = [x for x in quality if x != '']
-            return {"link": clean_quality[2], "level": clean_quality[3], "noise": clean_quality[4]}
+            return {"link": clean_quality[2], "level": clean_quality[3], "wifi-noise": clean_quality[4]}
 
 async def main():
     wifi=MySensor(name="wifi")
