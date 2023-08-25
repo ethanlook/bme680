@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 cd `dirname $0`
-set -eux
+set -euxo pipefail 
 # python -m venv env
 # source env/bin/activate
 sudo apt-get update
