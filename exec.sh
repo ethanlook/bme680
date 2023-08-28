@@ -3,8 +3,8 @@
 # bash safe mode. look at `set --help` to see what these are doing
 set -euxo pipefail 
 
+cd $(dirname $0)
 source .env
-cd $MODULE_DIR
 ./setup.sh
 
 # Be sure to use `exec` so that termination signals reach the python process,
