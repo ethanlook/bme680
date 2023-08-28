@@ -15,7 +15,7 @@ if command -v apt-get; then
 	else
 		if ! apt info python3-venv; then
 			echo package info not found, trying apt update
-			$SUDO apt-get update
+			$SUDO apt-get -qq update
 		fi
 		$SUDO apt-get install -qqy python3-venv
 	fi
