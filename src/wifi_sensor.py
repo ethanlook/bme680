@@ -9,7 +9,7 @@ from viam.resource.types import Model, ModelFamily
 
 class MySensor(Sensor):
     # Subclass the Viam Arm component and implement the required functions
-    MODEL: ClassVar[Model] = Model(ModelFamily("fahmina","wifi_sensor"), "linux")
+    MODEL: ClassVar[Model] = Model(ModelFamily("viam", "wifi_sensor"), "linux")
 
     @classmethod
     def new(cls, config: ComponentConfig, dependencies: Mapping[ResourceName, ResourceBase]) -> Self:
