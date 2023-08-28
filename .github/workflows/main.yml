@@ -3,6 +3,9 @@ on:
   release:
     types: [published]
 
+env:
+  VERSION: ${{ github.event_name == 'release' && github.ref_name || format('0.0.0-{0}.{1}', github.ref_name, github.run_number) }}
+
 jobs:
   publish:
     runs-on: ubuntu-latest
@@ -12,19 +15,19 @@ jobs:
       run: make module.tar.gz
     # publish for ARM devices
     - name: upload
-      if: ${{ github.event_name == 'release' }}
+      # if: ${{ github.event_name == 'release' }}
       uses: viamrobotics/upload-module@main
       with:
         module-path: module.tar.gz
         platform: linux/arm64
-        version: ${{ github.ref_name }}
+        version: ${{ env.VERSION }}
         cli-config-secret: ${{ secrets.cli_config }}
     # publish for Intel devices
     - name: upload
-      if: ${{ github.event_name == 'release' }}
+      # if: ${{ github.event_name == 'release' }}
       uses: viamrobotics/upload-module@main
       with:
         module-path: module.tar.gz
         platform: linux/amd64
-        version: ${{ github.ref_name }}
+        version: ${{ env.VERSION }}
         cli-config-secret: ${{ secrets.cli_config }}
