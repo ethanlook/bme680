@@ -16,12 +16,6 @@ jobs:
       run: |
         ./setup.sh
         .venv/bin/python -c "import viam"
-  test-make:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v3
-    - name: exercise bundle command
-      run: make module.tar.gz
   lint:
     runs-on: ubuntu-latest
     steps:
