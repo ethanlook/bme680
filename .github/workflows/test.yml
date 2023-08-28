@@ -22,3 +22,14 @@ jobs:
     - uses: actions/checkout@v3
     - name: exercise bundle command
       run: make module.tar.gz
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+    - name: install
+      run: pip install ruff
+    - name: lint
+      run: ruff check src

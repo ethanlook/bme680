@@ -2,7 +2,6 @@ import asyncio
 from typing import Any, ClassVar, Dict, Mapping, Optional
 from typing_extensions import Self
 from viam.components.sensor import Sensor
-from viam.operations import run_with_operation
 from viam.proto.app.robot import ComponentConfig
 from viam.proto.common import ResourceName
 from viam.resource.base import ResourceBase
