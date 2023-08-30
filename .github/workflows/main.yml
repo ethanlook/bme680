@@ -3,33 +3,29 @@ on:
   release:
     types: [published]
 
+env:
+  VERSION: ${{ github.event_name == 'release' && github.ref_name || format('0.0.0-{0}.{1}', github.ref_name, github.run_number) }}
+
 jobs:
-  # build step runs on every push
-  build:
+  publish:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
     - name: build
-      run: tar czf module.tar.gz exec.sh src requirements.txt # <-- your build command goes here
-    - uses: actions/upload-artifact@v3
-      with:
-        name: module
-        path: module.tar.gz
-
-  # publish step only runs on release
-  publish:
-    runs-on: ubuntu-latest
-    if: ${{ github.event_name == 'release' }}
-    steps:
-    - uses: actions/checkout@v3
-    - uses: actions/download-artifact@v3 # consume built module from 'build' job
-      with:
-        name: module
-    - name: upload
+      run: make module.tar.gz
+    - name: upload ARM
+      if: ${{ github.event_name == 'release' }}
       uses: viamrobotics/upload-module@main
       with:
         module-path: module.tar.gz
-        org-id: 19d1d286-c024-4d7a-ab9f-38cc2600eb42 # <-- replace with your org ID
         platform: linux/arm64
-        version: ${{ github.ref_name }}
+        version: ${{ env.VERSION }}
+        cli-config-secret: ${{ secrets.cli_config }}
+    - name: upload x86
+      if: ${{ github.event_name == 'release' }}
+      uses: viamrobotics/upload-module@main
+      with:
+        module-path: module.tar.gz
+        platform: linux/amd64
+        version: ${{ env.VERSION }}
         cli-config-secret: ${{ secrets.cli_config }}
