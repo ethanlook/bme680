@@ -9,6 +9,9 @@ env:
 jobs:
   publish:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        platform: [arm64, amd64]
     steps:
     - uses: actions/checkout@v3
     - name: build
@@ -18,14 +21,7 @@ jobs:
       uses: viamrobotics/upload-module@main
       with:
         module-path: module.tar.gz
-        platform: linux/arm64
+        platform: linux/${{ matrix.arch }}
         version: ${{ env.VERSION }}
-        cli-config-secret: ${{ secrets.cli_config }}
-    - name: upload x86
-      if: ${{ github.event_name == 'release' }}
-      uses: viamrobotics/upload-module@main
-      with:
-        module-path: module.tar.gz
-        platform: linux/amd64
-        version: ${{ env.VERSION }}
-        cli-config-secret: ${{ secrets.cli_config }}
+        key-id: ${{ secrets.viam_key_id }}
+        key-value: ${{ secrets.viam_key_value }}
