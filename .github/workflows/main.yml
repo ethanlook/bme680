@@ -16,7 +16,7 @@ jobs:
     - uses: actions/checkout@v3
     - name: build
       run: make module.tar.gz
-    - name: upload ARM
+    - name: upload
       if: ${{ github.event_name == 'release' }}
       uses: viamrobotics/upload-module@main
       with:
