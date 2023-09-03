@@ -1,6 +1,5 @@
 import asyncio
 from typing import Any, ClassVar, Dict, Mapping, Optional
-from typing_extensions import Self
 from viam.components.sensor import Sensor
 from viam.proto.app.robot import ComponentConfig
 from viam.proto.common import ResourceName
@@ -12,7 +11,7 @@ class MySensor(Sensor):
     MODEL: ClassVar[Model] = Model(ModelFamily("viam", "wifi_sensor"), "linux")
 
     @classmethod
-    def new(cls, config: ComponentConfig, dependencies: Mapping[ResourceName, ResourceBase]) -> Self:
+    def new(cls, config: ComponentConfig, dependencies: Mapping[ResourceName, ResourceBase]):
         sensor = cls(config.name)
         return sensor
 
