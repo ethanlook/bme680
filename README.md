@@ -36,4 +36,4 @@ You'll need to change all the namespace references in the codebase ('viam') to t
 
 ### Set a secret if you want to use Github CI
 
-Instructions for setting the secret are [here](https://github.com/viamrobotics/upload-module#setting-cli-config-secret).
+Instructions for setting the secret are [here](https://github.com/viamrobotics/upload-module#setting-up-auth).
