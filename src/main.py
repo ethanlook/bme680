@@ -3,7 +3,7 @@ import asyncio
 from viam.module.module import Module
 from viam.components.sensor import Sensor
 
-from .wifi_sensor import MySensor 
+from .bme680 import BME680 
 
 
 async def main():
@@ -12,7 +12,7 @@ async def main():
     """
 
     module = Module.from_args()
-    module.add_model_from_registry(Sensor.SUBTYPE, MySensor.MODEL)
+    module.add_model_from_registry(Sensor.SUBTYPE, BME680.MODEL)
     await module.start()
 
 
