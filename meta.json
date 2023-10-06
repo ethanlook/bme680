@@ -1,6 +1,6 @@
 {
   "name": "ethanlook:bme680",
-  "visibility": "private",
+  "visibility": "public",
   "url": "https://github.com/ethanlook/bme680",
   "description": "BME680 sensor - temperature, humidity, barometric pressure, and VOC gas sensing",
   "models": [
