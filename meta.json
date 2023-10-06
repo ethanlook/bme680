@@ -1,12 +1,12 @@
 {
-  "name": "viam:python-example-module",
-  "visibility": "public",
-  "url": "https://github.com/Fahmina/wifi-sensor",
-  "description": "This is a sensor that exposes wifi network, signal strength, and noise which is available via proc/net/wireless on linux",
+  "name": "ethanlook:bme680",
+  "visibility": "private",
+  "url": "https://github.com/ethanlook/bme680",
+  "description": "BME680 sensor - temperature, humidity, barometric pressure, and VOC gas sensing",
   "models": [
     {
       "api": "rdk:component:sensor",
-      "model": "viam:wifi_sensor:linux"
+      "model": "ethanlook:sensor:bme680"
     }
   ],
   "entrypoint": "exec.sh"

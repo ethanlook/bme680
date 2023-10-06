@@ -1,1 +1,3 @@
 viam-sdk
+adafruit-python-shell
+adafruit-circuitpython-bme680
