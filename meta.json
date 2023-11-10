@@ -1,5 +1,5 @@
 {
-  "name": "ethanlook:bme680",
+  "module_id": "ethanlook:bme680",
   "visibility": "public",
   "url": "https://github.com/ethanlook/bme680",
   "description": "BME680 sensor - temperature, humidity, barometric pressure, and VOC gas sensing",
@@ -7,6 +7,10 @@
     {
       "api": "rdk:component:sensor",
       "model": "ethanlook:sensor:bme680"
+    },
+    {
+      "api": "rdk:component:sensor",
+      "model": "ethanlook:sensor:bme680fake"
     }
   ],
   "entrypoint": "exec.sh"

@@ -13,6 +13,7 @@ async def main():
 
     module = Module.from_args()
     module.add_model_from_registry(Sensor.SUBTYPE, BME680.MODEL)
+    module.add_model_from_registry(Sensor.SUBTYPE, BME680.MODEL_FAKE)
     await module.start()
 
 
